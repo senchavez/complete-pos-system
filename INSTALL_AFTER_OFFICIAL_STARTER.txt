@@ -1,0 +1,20 @@
+POS OVERLAY INSTALLATION
+
+1. In C:\xampp\htdocs, create a fresh official CodeIgniter project:
+   composer create-project codeigniter4/appstarter finished_pos
+
+2. Extract this ZIP directly into C:\xampp\htdocs\finished_pos.
+
+3. When Windows asks whether to replace files, choose "Replace the files in the destination".
+
+4. Copy the official file named env and rename the copy to .env.
+
+5. Configure .env with database complete_pos and base URL http://localhost:8080/.
+
+6. Run:
+   php spark key:generate
+   php spark migrate
+   php spark db:seed DatabaseSeeder
+   php spark serve
+
+7. Open http://localhost:8080 and log in using admin / Admin123!

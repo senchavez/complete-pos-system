@@ -1,0 +1,13 @@
+<?php
+namespace App\Models;
+use CodeIgniter\Model;
+class SaleModel extends Model
+{
+    protected $table='sales'; protected $primaryKey='id'; protected $returnType='array';
+    protected $allowedFields=['product_id','customer_id','sold_by','quantity','total_price']; protected $useTimestamps=true; protected $updatedField='updated_at';
+    public function history(): array
+    {
+        return $this->select('sales.*, products.name product_name, customers.full_name customer_name, users.full_name staff_name')
+            ->join('products','products.id=sales.product_id')->join('customers','customers.id=sales.customer_id','left')->join('users','users.id=sales.sold_by')->orderBy('sales.created_at','DESC')->findAll();
+    }
+}
